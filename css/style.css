@@ -801,3 +801,16 @@ ul, ol { list-style: none; }
 @media (max-width: 520px) {
   .trabalhe-text .btn { width: 100%; }
 }
+
+
+/* ===== ESTÁGIOS: alternativa por e-mail ===== */
+.estagios-cta .estagios-cta-alt { margin: 1.6rem auto 0; font-size: .92rem; max-width: 640px; }
+.estagios-cta-alt a { color: var(--green-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.estagios-cta-alt a:hover { color: var(--green-medium); }
+
+/* ===== PÁGINA 404 ===== */
+.erro-codigo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 10vw, 6rem); line-height: 1; color: var(--green-light); margin-bottom: .6rem; }
+.erro-404 { padding: 4.5rem 0 6rem; text-align: center; background: var(--white); }
+.erro-404 > .container > p { margin-bottom: 1.6rem; font-size: 1.05rem; }
+.erro-404-botoes { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; }
+@media (max-width: 520px) { .erro-404-botoes .btn { width: 100%; } }
