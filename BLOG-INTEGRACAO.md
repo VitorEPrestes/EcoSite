@@ -5,7 +5,7 @@ Documento de alinhamento entre duas frentes:
 - **Sistema interno (Codex):** tela onde a equipe escreve e publica os textos.
 - **Site (Claude):** páginas públicas, modelo visual, SEO e geração das páginas.
 
-Status: **proposta para revisão**. Os itens marcados como **Decisão em aberto** precisam ser fechados pelo Isolas antes de implementar.
+Status: **decisões fechadas pelo Isolas em 2026-11-09** (seção 6). Pronto para implementar.
 
 > Este repositório é público. Não escrever aqui senhas, chaves, endereços internos do servidor nem caminhos absolutos do sistema. Os caminhos abaixo são sempre relativos à raiz do site.
 
@@ -55,7 +55,7 @@ O sistema envia ao site **somente dados**, nunca HTML pronto. Quem monta a pági
 | `imagem` | caminho | `assets/images/blog/<slug>.jpg`, proporção 16:9, 1600×900. |
 | `imagem_alt` | texto | Obrigatório. Descreve a imagem em uma frase. |
 | `corpo` | texto simples | Formato na seção 3. |
-| `publicado` | verdadeiro/falso | Falso remove o texto do site e do `sitemap.xml`. |
+| `publicado` | verdadeiro/falso | Falso = rascunho: o texto existe só no sistema e não aparece no site nem no `sitemap.xml`. Despublicar um texto já publicado também usa falso. |
 
 ### Onde ficam os dados
 
@@ -76,7 +76,10 @@ Texto simples, sem HTML. O site escapa tudo.
 - Linha em branco separa parágrafos.
 - `## Título` vira subtítulo (`h2`).
 - Linhas começando com `- ` viram lista.
-- Nada além disso: sem HTML, sem imagens no meio do texto, sem links externos nesta primeira versão.
+- `**palavra**` vira negrito.
+- `[texto do link](https://endereco)` vira link. Só `https://` ou caminho do próprio site começando com `/`. Links externos abrem em nova aba com `rel="noopener nofollow"`. Qualquer outro esquema (`javascript:`, `data:` etc.) é exibido como texto comum.
+- Linha sozinha `![descrição da imagem](assets/images/blog/<slug>-<n>.jpg)` vira imagem no meio do texto, com a descrição como `alt` (obrigatória). Só caminhos dentro de `assets/images/blog/` do próprio texto; nunca endereço externo.
+- Nada além disso: sem HTML. O site escapa tudo e só então aplica essas marcações.
 
 Exemplo:
 
@@ -89,7 +92,15 @@ Outro parágrafo.
 
 - primeiro item
 - segundo item
+
+Veja **mais detalhes** na [página de serviços](/#servicos).
+
+![Mudas nativas no viveiro](assets/images/blog/meu-texto-1.jpg)
 ```
+
+### Imagens do meio do texto
+
+O sistema trata cada uma como a capa (reprocessa, remove metadados), mas com largura máxima de 1600 px mantendo a proporção, e grava em `assets/images/blog/<slug>-<n>.jpg` (`n` = 1, 2, 3…). Limite: 10 imagens por texto.
 
 ---
 
@@ -101,7 +112,7 @@ Outro parágrafo.
 2. Validação no servidor, repetindo todas as regras acima (a validação do navegador não basta).
 3. Envio da imagem: aceitar JPG, PNG ou WebP até 8 MB; converter para JPG, 1600×900, com corte centralizado; remover metadados (EXIF/GPS); salvar em `assets/images/blog/<slug>.jpg`.
 4. Gravar `blog/_dados/<slug>.json` e atualizar `blog/_dados/posts.json` (escrita por arquivo temporário e troca, para nunca deixar arquivo pela metade).
-5. Acionar a geração das páginas (ver **Decisão em aberto 2**).
+5. Logo depois de gravar, rodar o gerador do site (ver seção 6, decisão 2).
 6. Registro de quem publicou, editou ou despublicou, e quando, dentro do sistema.
 7. Permissão de publicar restrita a usuários autorizados.
 
@@ -117,9 +128,9 @@ Outro parágrafo.
 
 ## 5. Permissões e segurança
 
-- O sistema grava **somente** em: `blog/_dados/`, `blog/<slug>/`, `blog/index.html`, `assets/images/blog/` e `sitemap.xml`. Nada mais do site fica gravável.
+- O sistema grava **somente** em `blog/_dados/` e `assets/images/blog/`; quem grava `blog/index.html`, `blog/<slug>/` e `sitemap.xml` é o gerador. Nada mais do site fica gravável.
 - O contrário também vale: o site público nunca lê nada do sistema interno e nenhuma página gerada cita o endereço do sistema.
-- `blog/_dados/` não deve ser servido ao público (regra de negar no Nginx para qualquer caminho começando com `/blog/_`). Os arquivos de dados existem para o gerador, não para visitantes.
+- `blog/_dados/` não deve ser servido ao público (regra de negar no Nginx para qualquer caminho começando com `/blog/_` ou `/_gerador`). Os arquivos de dados existem para o gerador, não para visitantes.
 - `slug` validado como na seção 2 antes de montar qualquer caminho. Nunca aceitar `/`, `..`, nem nome vindo do usuário em caminho de arquivo sem essa validação.
 - O gerador escapa título, resumo, autor, alt e corpo. O sistema não envia HTML e o site não confia em HTML recebido.
 - Imagem sempre reprocessada pelo sistema; nunca gravar o arquivo enviado como veio.
@@ -127,28 +138,26 @@ Outro parágrafo.
 
 ---
 
-## 6. Decisões em aberto
+## 6. Decisões (fechadas em 2026-11-09)
 
-**1. Git e arquivos gerados.**
-Hoje o `blog/index.html` e os 3 textos estão no Git. Se o sistema regenerar esses arquivos na VPS, o próximo `git pull` pode dar conflito.
-Sugestão: migrar os 3 textos para dados, deixar `blog/index.html`, `blog/<slug>/` e `blog/_dados/` fora do Git (`.gitignore`) e manter no Git o modelo e o gerador. O Git passa a guardar o código; o conteúdo do blog vive na VPS.
-Cuidado: com isso o backup do conteúdo do blog precisa estar no backup da VPS.
+**1. Conteúdo do blog fica só na VPS.**
+O GitHub guarda o modelo, o gerador e o resto do site. `blog/index.html`, `blog/<slug>/`, `blog/_dados/`, `assets/images/blog/` e `sitemap.xml` passam a ser gerados na VPS e ficam no `.gitignore`. Os 3 textos atuais são migrados para `blog/_dados/` uma única vez. O backup da VPS precisa incluir essas pastas.
 
-**2. Como o sistema aciona o gerador.**
-Sugestão: gerador em PHP (a VPS já roda PHP), chamado pelo sistema logo depois de gravar os dados. Alternativa: o sistema só grava os dados e um agendamento na VPS roda o gerador a cada poucos minutos. A primeira dá resultado imediato; a segunda isola mais o sistema do site.
+**2. Publicação na hora.**
+O gerador é um script PHP do site (`_gerador/gerar-blog.php`). O sistema chama logo depois de gravar os dados, pela linha de comando do PHP (`php _gerador/gerar-blog.php`), sem passar pela internet. Ele regenera a lista, todas as páginas de texto e o `sitemap.xml`, e remove pastas de textos que não estão mais publicados. Saída: código 0 em sucesso; diferente de 0 com a mensagem de erro, que o sistema deve mostrar a quem publicou. A pasta `_gerador/` também fica bloqueada ao público no Nginx.
 
-**3. Quem revisa antes de publicar.**
-Hoje a proposta é publicar direto. Alternativa: estado "rascunho" e "publicado", com revisão por um segundo usuário. O campo `publicado` já cobre o rascunho.
+**3. Rascunho e publicado, sem segundo revisor.**
+Quem tem permissão salva como rascunho (`publicado: false`) e publica quando quiser.
 
-**4. Corpo em texto simples basta?**
-Sem links externos, negrito ou imagens no meio do texto. Se isso fizer falta, ampliar o formato na seção 3 em vez de aceitar HTML.
+**4. Corpo com negrito, links e imagens no meio.**
+Formato ampliado na seção 3, sempre sem HTML.
 
 ---
 
 ## 7. Roteiro de implantação
 
-1. Isolas fecha as decisões da seção 6.
+1. ~~Isolas fecha as decisões da seção 6.~~ Feito.
 2. Claude entrega modelo, gerador e migração dos 3 textos, com testes.
 3. Codex entrega a tela e a gravação conforme as seções 2, 3 e 5.
-4. Teste combinado em ambiente de teste: criar, editar, trocar a imagem, despublicar, tentar slug inválido, tentar HTML no corpo.
+4. Teste combinado em ambiente de teste: criar, editar, trocar a imagem, despublicar, tentar slug inválido, tentar HTML no corpo, tentar link `javascript:`.
 5. Publicação definitiva e conferência no Google Search Console.
