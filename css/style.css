@@ -418,7 +418,7 @@ ul, ol { list-style: none; }
   box-shadow: var(--shadow-lg);
 }
 .estagios-image::after {
-  content: 'Primeira experiência? Comece por aqui.';
+  content: 'Estágio ou experiência: a candidatura é uma só.';
   position: absolute;
   left: 1.5rem; bottom: 1.4rem; right: 1.5rem;
   color: var(--white);
@@ -814,3 +814,59 @@ ul, ol { list-style: none; }
 .erro-404 > .container > p { margin-bottom: 1.6rem; font-size: 1.05rem; }
 .erro-404-botoes { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; }
 @media (max-width: 520px) { .erro-404-botoes .btn { width: 100%; } }
+
+
+/* ===== TRABALHE CONOSCO (home e página) ===== */
+.caminhos-mini { display: grid; gap: .8rem; margin: 1.6rem 0 2rem; }
+.caminhos-mini li {
+  display: flex; align-items: flex-start; gap: .9rem;
+  padding: .95rem 1.1rem;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 4px 14px rgba(27, 67, 50, .07);
+  font-size: .92rem; line-height: 1.5;
+}
+.caminhos-mini i {
+  flex-shrink: 0; display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--green-pale); color: var(--green-dark);
+}
+.caminhos-mini strong { display: block; color: var(--green-deep); font-family: 'Montserrat', sans-serif; font-size: .95rem; }
+.estagios-text .estagios-botoes { display: flex; flex-wrap: wrap; gap: .8rem; }
+.estagios-text .estagios-botoes .btn { margin-top: 0; }
+
+.estagios-hero .btn { margin-top: 1.8rem; }
+
+.caminhos { background: var(--cream); padding: 5.5rem 0; }
+.caminhos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; max-width: 960px; margin: 0 auto; }
+.caminho-card {
+  display: flex; flex-direction: column;
+  padding: 2.2rem;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--gray-text);
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--green-medium);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.caminho-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.caminho-card > i {
+  display: grid; place-items: center;
+  width: 56px; height: 56px; margin-bottom: 1.2rem;
+  border-radius: 16px;
+  background: var(--green-pale); color: var(--green-dark);
+  font-size: 1.4rem;
+}
+.caminho-card h3 { color: var(--green-deep); font-size: 1.2rem; margin-bottom: .7rem; }
+.caminho-card p { font-size: .95rem; margin-bottom: 1.4rem; }
+.caminho-link { margin-top: auto; display: inline-flex; align-items: center; gap: .5rem; color: var(--green-dark); font-weight: 700; font-size: .92rem; }
+.caminho-card:hover .caminho-link { color: var(--green-medium); }
+
+@media (max-width: 768px) {
+  .caminhos { padding: 4rem 0; }
+  .caminhos-grid { grid-template-columns: 1fr; }
+  .caminho-card { padding: 1.8rem 1.5rem; }
+}
+@media (max-width: 520px) {
+  .estagios-text .estagios-botoes .btn, .estagios-hero .btn { width: 100%; }
+}
