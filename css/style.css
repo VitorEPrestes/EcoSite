@@ -182,7 +182,7 @@ ul, ol { list-style: none; }
   color: var(--white);
   background:
     linear-gradient(105deg, rgba(20, 52, 39, .92) 0%, rgba(27, 67, 50, .78) 45%, rgba(45, 106, 79, .45) 100%),
-    url('/assets/images/viveiro.jpg') center/cover no-repeat;
+    url('/assets/images/viveiro.webp') center/cover no-repeat;
   overflow: hidden;
 }
 .hero::after {
@@ -319,7 +319,7 @@ ul, ol { list-style: none; }
 }
 .servico-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
 .servico-card:hover::after { transform: scaleX(1); }
-.servico-card i {
+.servico-card > i {
   display: grid; place-items: center;
   width: 62px; height: 62px;
   border-radius: 18px;
@@ -329,7 +329,7 @@ ul, ol { list-style: none; }
   margin-bottom: 1.4rem;
   transition: all var(--transition);
 }
-.servico-card:hover i { background: var(--green-dark); color: var(--white); }
+.servico-card:hover > i { background: var(--green-dark); color: var(--white); }
 .servico-card h3 { font-size: 1.1rem; margin-bottom: .7rem; }
 .servico-card p { font-size: .93rem; color: var(--gray-text); }
 
@@ -414,11 +414,11 @@ ul, ol { list-style: none; }
   width: 100%;
   aspect-ratio: 5 / 4;
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, transparent 45%, rgba(20, 52, 39, .75)), url('/assets/images/servico3.jpg') center/cover no-repeat;
+  background: linear-gradient(180deg, transparent 45%, rgba(20, 52, 39, .75)), url('/assets/images/servico3-800.webp') center/cover no-repeat;
   box-shadow: var(--shadow-lg);
 }
 .estagios-image::after {
-  content: 'Estágio ou experiência: veja o seu caminho.';
+  content: 'Venha trabalhar com a gente.';
   position: absolute;
   left: 1.5rem; bottom: 1.4rem; right: 1.5rem;
   color: var(--white);
@@ -452,7 +452,7 @@ ul, ol { list-style: none; }
 }
 .contato-info h3 { color: var(--white); font-size: 1.35rem; margin-bottom: 1.8rem; }
 .contato-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-.contato-item i {
+.contato-item > i {
   flex-shrink: 0;
   display: grid; place-items: center;
   width: 42px; height: 42px;
@@ -540,6 +540,7 @@ ul, ol { list-style: none; }
   overflow: hidden;
 }
 .page-header h1,
+.page-header p.page-header-title,
 .estagios-hero h1 { color: var(--white); font-size: clamp(2rem, 4.2vw, 3rem); margin-bottom: .8rem; }
 .page-header p,
 .estagios-hero p { color: rgba(255, 255, 255, .86); font-size: 1.1rem; max-width: 620px; margin: 0 auto; }
@@ -870,3 +871,75 @@ ul, ol { list-style: none; }
 @media (max-width: 520px) {
   .estagios-text .estagios-botoes .btn, .estagios-hero .btn { width: 100%; }
 }
+
+/* ===== ÍCONES (SVG embutido, sem biblioteca externa) ===== */
+.ico { display: inline-block; font-style: normal; line-height: 1; }
+.ico svg { display: inline-block; height: 1em; fill: currentColor; vertical-align: -.125em; overflow: visible; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+.page-header p.page-header-title { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; line-height: 1.2; letter-spacing: -.01em; max-width: none; }
+
+/* Contatos clicáveis */
+.contato-item a, .footer-contact a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .3); text-underline-offset: 3px; }
+.contato-item a:hover, .footer-contact a:hover { color: var(--white); text-decoration-color: currentColor; }
+.contato-mapa { display: inline-flex; align-items: center; gap: .4rem; margin-top: .35rem; font-size: .88rem; font-weight: 600; color: var(--green-light) !important; }
+.contato-mapa .ico { font-size: .75rem; }
+
+/* Cards de serviço com link para a página própria */
+.servico-card { display: flex; flex-direction: column; }
+.servico-card p { margin-bottom: 1.2rem; }
+.servico-link { margin-top: auto; display: inline-flex; align-items: center; gap: .5rem; font-size: .88rem; font-weight: 700; color: var(--green-dark); }
+.servico-link::before { content: ''; position: absolute; inset: 0; } /* card inteiro clicável */
+.servico-link .ico { transition: transform var(--transition); }
+.servico-card:hover .servico-link .ico { transform: translateX(5px); }
+
+/* ===== PERGUNTAS FREQUENTES ===== */
+.faq { background: var(--gray-light); }
+.faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
+.faq-item { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.faq-item summary {
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  font-family: 'Montserrat', system-ui, sans-serif; font-weight: 700; font-size: 1rem; color: var(--green-deep);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; flex-shrink: 0; font-size: 1.4rem; font-weight: 600; line-height: 1; color: var(--green-medium); transition: transform var(--transition); }
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { padding: 0 1.4rem 1.3rem; font-size: .95rem; }
+.faq-item a { color: var(--green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ===== PÁGINAS DE SERVIÇO ===== */
+.servico-page { max-width: 780px; margin: 0 auto; padding: 3.5rem 1.5rem 4rem; }
+.servico-page-body > p { margin-bottom: 1.3rem; font-size: 1.05rem; line-height: 1.85; color: #38453f; }
+.servico-page-body > p:first-child { font-size: 1.15rem; color: var(--ink); }
+.servico-page-body h2 { margin: 2.6rem 0 1rem; font-size: 1.4rem; padding-left: 1rem; border-left: 4px solid var(--green-light); }
+.servico-lista { display: flex; flex-direction: column; gap: .7rem; }
+.servico-lista li { display: flex; gap: .8rem; align-items: baseline; font-size: 1.02rem; color: #38453f; }
+.servico-lista .ico { color: var(--green-medium); font-size: .9rem; flex-shrink: 0; }
+.servico-etapas { counter-reset: etapa; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.servico-etapas li { counter-increment: etapa; padding: 1.2rem 1.3rem 1.2rem 3.6rem; position: relative; border: 1px solid var(--line); border-radius: var(--radius); }
+.servico-etapas li::before { content: counter(etapa); position: absolute; left: 1.2rem; top: 1.15rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--green-pale); color: var(--green-dark); font-weight: 700; font-size: .85rem; display: grid; place-items: center; }
+.servico-etapas strong { display: block; color: var(--green-deep); font-family: 'Montserrat', system-ui, sans-serif; font-size: .95rem; margin-bottom: .25rem; }
+.servico-etapas span { font-size: .9rem; }
+.servico-leia { display: flex; flex-direction: column; gap: .6rem; }
+.servico-leia a { color: var(--green-dark); font-weight: 600; }
+.servico-leia a:hover { color: var(--green-medium); }
+.servico-leia .ico { font-size: .8rem; margin-left: .3rem; }
+.servico-cta-botoes { display: flex; gap: .7rem; flex-wrap: wrap; }
+.servicos-outros { background: var(--gray-light); padding: 3.5rem 0 4.5rem; }
+.servicos-outros h2 { font-size: 1.3rem; text-align: center; margin-bottom: 1.6rem; }
+.servicos-outros ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; max-width: 900px; margin: 0 auto; }
+.servicos-outros a { display: inline-flex; align-items: center; gap: .55rem; padding: .65rem 1.1rem; background: var(--white); border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; font-weight: 600; color: var(--green-deep); }
+.servicos-outros a:hover { border-color: var(--green-medium); color: var(--green-dark); }
+.servicos-outros .ico { color: var(--green-medium); }
+@media (max-width: 600px) {
+  .servico-etapas { grid-template-columns: 1fr; }
+}
+
+/* Trabalhe conosco: formulário em primeiro lugar */
+.hero-form-btn { margin-top: 1.8rem; }
+.estagio-aviso { text-align: center; margin-top: 2rem; font-size: .98rem; }
+.estagio-aviso a, .estagio-aviso-home a { color: var(--green-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.estagio-aviso-home { margin-top: 1.4rem; font-size: .92rem; }
