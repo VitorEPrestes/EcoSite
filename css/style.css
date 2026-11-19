@@ -247,10 +247,30 @@ ul, ol { list-style: none; }
 @keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 7px); } }
 
 /* ===== SOBRE ===== */
-.sobre { background: var(--white); }
+.sobre { background: var(--cream); }
 .sobre-content { display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: center; }
 .sobre-text h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 1.5rem; }
 .sobre-text p { margin-bottom: 1.1rem; }
+
+.sobre-mvv {
+  margin-top: 1.8rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(45, 106, 79, .18);
+}
+.sobre-mvv p { font-size: .96rem; margin-bottom: .75rem; }
+.sobre-mvv strong { color: var(--green-deep); font-family: 'Montserrat', sans-serif; font-weight: 700; }
+.sobre-mvv .sobre-valores-label { margin-bottom: .6rem; }
+.sobre-valores { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.sobre-valores li {
+  padding: .4rem .95rem;
+  border-radius: 999px;
+  background: var(--white);
+  border: 1px solid rgba(64, 145, 108, .3);
+  color: var(--green-dark);
+  font-size: .84rem;
+  font-weight: 600;
+  cursor: default;
+}
 
 .sobre-media { position: relative; padding-bottom: 3rem; }
 .sobre-photo { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4 / 3.2; }
@@ -278,100 +298,6 @@ ul, ol { list-style: none; }
 .stat-card + .stat-card { border-left: 1px solid var(--line); }
 .stat-card .stat-number { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--green-dark); display: block; line-height: 1.1; }
 .stat-card .stat-label { display: block; font-size: .74rem; line-height: 1.35; color: var(--gray-text); margin-top: .35rem; }
-
-/* ===== ATUAÇÃO ===== */
-.atuacao { background: var(--cream); }
-.atuacao-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.atuacao-item {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 2rem 1.7rem;
-  box-shadow: var(--shadow-sm);
-  border-top: 4px solid var(--green-light);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.atuacao-item:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-.atuacao-item span { display: block; color: var(--green-medium); font-size: .74rem; font-weight: 700; letter-spacing: .1em; margin-bottom: .5rem; text-transform: uppercase; }
-.atuacao-item strong { display: block; color: var(--green-deep); font-family: 'Montserrat', sans-serif; font-size: 1.35rem; line-height: 1.2; margin-bottom: .8rem; }
-.atuacao-item p { font-size: .92rem; }
-
-/* ===== MISSÃO, VISÃO E VALORES ===== */
-.mvv { background: var(--gray-light); }
-.mvv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem; margin-bottom: 1.75rem; }
-.mvv-card {
-  position: relative;
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 2.4rem 2.2rem;
-  box-shadow: var(--shadow-sm);
-  border-left: 5px solid var(--green-medium);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.mvv-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.mvv-icon {
-  display: grid; place-items: center;
-  width: 54px; height: 54px;
-  border-radius: 16px;
-  background: var(--green-pale);
-  color: var(--green-dark);
-  font-size: 1.6rem;
-  margin-bottom: 1.1rem;
-}
-.mvv-icon svg, .mvv-check svg {
-  display: block;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.mvv-icon .mvv-fill { fill: currentColor; stroke: none; }
-.mvv-card h3 { font-size: 1.3rem; color: var(--green-deep); margin-bottom: .7rem; }
-.mvv-card p { font-size: 1.02rem; margin: 0; }
-
-.mvv-valores {
-  border-radius: var(--radius-lg);
-  padding: 2.4rem 2.2rem;
-  background:
-    radial-gradient(circle at 10% 15%, rgba(116, 198, 157, .16), transparent 42%),
-    linear-gradient(135deg, var(--green-deep), var(--green-dark));
-  color: var(--white);
-  box-shadow: var(--shadow);
-}
-.mvv-valores-title { color: var(--white); font-size: 1.3rem; margin-bottom: 1.6rem; }
-.mvv-valores-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
-.mvv-valores-list li {
-  padding: 1.4rem 1.2rem;
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, .07);
-  border: 1px solid rgba(255, 255, 255, .12);
-  transition: background var(--transition), transform var(--transition);
-}
-.mvv-valores-list li:hover { background: rgba(255, 255, 255, .12); transform: translateY(-3px); }
-.mvv-check {
-  display: grid; place-items: center;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--green-light);
-  color: var(--green-deep);
-  font-size: 1.05rem;
-  margin-bottom: .85rem;
-}
-.mvv-check svg { stroke-width: 3; }
-.mvv-valores-list strong { display: block; font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--white); margin-bottom: .4rem; }
-.mvv-valores-list p { font-size: .87rem; line-height: 1.5; color: rgba(255, 255, 255, .78); margin: 0; }
-
-@media (max-width: 1024px) {
-  .mvv-valores-list { grid-template-columns: repeat(3, 1fr); }
-}
-@media (max-width: 768px) {
-  .mvv-grid { grid-template-columns: 1fr; }
-  .mvv-valores-list { grid-template-columns: repeat(2, 1fr); }
-  .mvv-card, .mvv-valores { padding: 2rem 1.5rem; }
-}
-@media (max-width: 520px) {
-  .mvv-valores-list { grid-template-columns: 1fr; }
-}
 
 /* ===== SERVIÇOS ===== */
 .servicos { background: var(--white); }
@@ -761,7 +687,7 @@ ul, ol { list-style: none; }
 /* ===== RESPONSIVO ===== */
 @media (max-width: 1024px) {
   .section { padding: 5rem 0; }
-  .atuacao-grid, .diferenciais-grid, .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+  .diferenciais-grid, .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
   .servicos-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-grid, .blog-page-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -806,7 +732,7 @@ ul, ol { list-style: none; }
   .section { padding: 4rem 0; }
   .hero { padding-bottom: 6rem; }
   .hero p { font-size: 1.02rem; }
-  .atuacao-grid, .servicos-grid { grid-template-columns: 1fr; }
+  .servicos-grid { grid-template-columns: 1fr; }
   .blog-grid, .blog-page-grid, .post-related .blog-page-grid { grid-template-columns: 1fr; }
   .beneficios-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
