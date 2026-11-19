@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=fb6505c5">
+  <link rel="stylesheet" href="/css/style.css?v=a9aacab9">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/logo/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/logo/icon-192.png">
   <link rel="apple-touch-icon" href="/assets/images/logo/apple-touch-icon.png">
@@ -322,6 +322,67 @@
     </div>
   </section>
 
+  <section id="onde-estamos" class="section onde-estamos">
+    <div class="container">
+      <div class="section-head fade-in">
+        <span class="eyebrow">Onde estamos</span>
+        <h2 class="section-title">Da sede em Cajati para vários estados</h2>
+        <p class="section-subtitle">Locais de atuação da Ecotec, do Vale do Ribeira ao Rio Grande do Norte. Passe o mouse ou toque em um ponto do mapa para ver quem atendemos em cada cidade.</p>
+      </div>
+      <div class="oe-wrap">
+        <div class="oe-map fade-in" data-view="br">
+          <div class="oe-toolbar" role="group" aria-label="Enquadramento do mapa">
+            <button type="button" class="oe-view-btn is-active" data-view-btn="br" aria-pressed="true">Brasil</button>
+            <button type="button" class="oe-view-btn" data-view-btn="sp" aria-pressed="false">São Paulo e região</button>
+          </div>
+          <div class="oe-canvas" aria-hidden="true"></div>
+          <p class="oe-note">Localização aproximada por município.</p>
+        </div>
+        <div class="oe-panel fade-in">
+          <div class="oe-stats">
+            <div class="oe-stat"><strong data-count="25">25</strong><span>locais de atuação</span></div>
+            <div class="oe-stat"><strong data-count="20">20</strong><span>cidades</span></div>
+            <div class="oe-stat"><strong data-count="5">5</strong><span>estados</span></div>
+          </div>
+          <div class="oe-filters" role="group" aria-label="Filtrar por região">
+            <button type="button" class="oe-chip is-active" data-filter="all" aria-pressed="true">Todos</button>
+            <button type="button" class="oe-chip" data-filter="vale" aria-pressed="false">Vale do Ribeira</button>
+            <button type="button" class="oe-chip" data-filter="grande-sp" aria-pressed="false">Grande SP</button>
+            <button type="button" class="oe-chip" data-filter="interior" aria-pressed="false">Interior de SP</button>
+            <button type="button" class="oe-chip" data-filter="outros" aria-pressed="false">Outros estados</button>
+          </div>
+          <ul class="oe-list" aria-label="Locais de atuação">
+          <li data-region="vale"><button type="button" class="oe-item is-sede" data-city="Cajati" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Sede Ecotec</strong><small>Cajati · SP</small></span><em class="oe-tag">Sede</em></button></li>
+          <li data-region="outros"><button type="button" class="oe-item" data-city="Bodoquena" data-uf="MS"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Intercement</strong><small>Bodoquena · MS</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Cajati" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Intercement Brasil</strong><small>Cajati · SP</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Cajati" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Mosaic Fertilizantes</strong><small>Cajati · SP</small></span></button></li>
+          <li data-region="grande-sp"><button type="button" class="oe-item" data-city="Mairiporã" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Mairiporã</strong><small>SP</small></span></button></li>
+          <li data-region="outros"><button type="button" class="oe-item" data-city="Antonina" data-uf="PR"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Portos do Paraná</strong><small>Antonina · PR</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Cajati" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Sabesp – Parque Estadual do Rio Turvo</strong><small>Cajati · SP</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Iguape" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Sabesp</strong><small>Iguape · SP</small></span></button></li>
+          <li data-region="outros"><button type="button" class="oe-item" data-city="Natal" data-uf="RN"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SAEE – Parque Municipal Felipe Camarão</strong><small>Natal · RN</small></span></button></li>
+          <li data-region="grande-sp"><button type="button" class="oe-item" data-city="São Bernardo do Campo" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>São Bernardo do Campo</strong><small>SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Ribeirão Preto" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Ribeirão Preto</strong><small>Ribeirão Preto · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Araraquara" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Araraquara</strong><small>Araraquara · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="São Carlos" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC São Carlos</strong><small>São Carlos · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Catanduva" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Catanduva</strong><small>Catanduva · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="São José do Rio Preto" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC São José do Rio Preto</strong><small>São José do Rio Preto · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Birigui" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Birigui</strong><small>Birigui · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Araçatuba" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Araçatuba</strong><small>Araçatuba · SP</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Registro" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Registro</strong><small>Registro · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Franca" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SESC Franca</strong><small>Franca · SP</small></span></button></li>
+          <li data-region="outros"><button type="button" class="oe-item" data-city="Uberaba" data-uf="MG"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Mosaic Fertilizantes</strong><small>Uberaba · MG</small></span></button></li>
+          <li data-region="grande-sp"><button type="button" class="oe-item" data-city="São Paulo" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>SP Águas</strong><small>São Paulo · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Rio Claro" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Secretaria dos Transportes Metropolitanos</strong><small>Rio Claro · SP</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Registro" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Hospital Regional de Registro</strong><small>Registro · SP</small></span></button></li>
+          <li data-region="vale"><button type="button" class="oe-item" data-city="Cajati" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Prefeitura Municipal de Cajati</strong><small>Cajati · SP</small></span></button></li>
+          <li data-region="interior"><button type="button" class="oe-item" data-city="Brotas" data-uf="SP"><span class="oe-dot" aria-hidden="true"></span><span class="oe-txt"><strong>Prefeitura Municipal de Brotas</strong><small>Brotas · SP</small></span></button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section diferenciais">
     <div class="container">
       <div class="section-head fade-in">
@@ -528,5 +589,6 @@
   </a>
 
   <script src="/js/main.js?v=14a7f2e9"></script>
+  <script src="/js/onde-estamos.js?v=4e80d0cf" defer></script>
 </body>
 </html>
