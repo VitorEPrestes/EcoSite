@@ -1317,3 +1317,15 @@ html:not(.js) .oe-wrap { grid-template-columns: 1fr; }
 }
 .oe-sp-name.is-sea { font-weight: 600; font-style: italic; letter-spacing: .1px; fill: rgba(45, 106, 79, .5); }
 .oe-map[data-view="sp"] .oe-sp-name { opacity: 1; transition: opacity .5s ease .6s; }
+
+/* Foto no topo dos cards de serviço */
+.servico-media {
+  margin: -2.2rem -2rem 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--green-pale);
+}
+.servico-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.servico-card:hover .servico-media img { transform: scale(1.04); }
+.servico-media.is-empty { background: linear-gradient(135deg, var(--green-pale), #eef7ef); }
+.servico-card > i { margin-top: -31px; position: relative; z-index: 1; box-shadow: 0 0 0 5px var(--white); }
