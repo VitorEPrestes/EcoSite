@@ -1,0 +1,6 @@
+# Gerado na VPS pelo _gerador/gerar-blog.php (ver BLOG-INTEGRACAO.md, decisão 1).
+# O conteúdo do blog vive só na VPS; o backup da VPS precisa incluir estas pastas.
+/blog/*
+!/blog/posts/
+/assets/images/blog/
+/sitemap.xml

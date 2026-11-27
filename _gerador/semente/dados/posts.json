@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "mudas-nativas",
+    "titulo": "O que 1 milhão de mudas ensina depois do plantio",
+    "resumo": "O número chama atenção, mas o resultado depende do preparo da área, da espécie certa e do cuidado depois.",
+    "categoria": "noticias",
+    "data": "2025-04-30",
+    "imagem": "assets/images/blog/mudas-nativas.jpg",
+    "imagem_alt": "Equipe Ecotec em atividade de campo",
+    "publicado": true
+  },
+  {
+    "slug": "coleta-seletiva",
+    "titulo": "Coleta seletiva começa antes do caminhão passar",
+    "resumo": "Separar bem em casa, no comércio ou na empresa evita retrabalho e ajuda o reciclável a chegar melhor ao destino.",
+    "categoria": "dicas",
+    "data": "2025-04-22",
+    "imagem": "assets/images/blog/coleta-seletiva.jpg",
+    "imagem_alt": "Equipe em serviço ambiental relacionado a limpeza e organização de áreas",
+    "publicado": true
+  },
+  {
+    "slug": "matas-ciliares",
+    "titulo": "Mata ciliar: por que a margem do rio não é sobra de terreno",
+    "resumo": "Um olhar simples sobre erosão, água limpa e o papel das espécies nativas nas beiras de córregos e nascentes.",
+    "categoria": "reflorestamento",
+    "data": "2025-04-15",
+    "imagem": "assets/images/blog/matas-ciliares.jpg",
+    "imagem_alt": "Área em restauração ambiental acompanhada pela Ecotec",
+    "publicado": true
+  }
+]

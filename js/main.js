@@ -80,6 +80,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ----- Destaques do blog na página inicial -----
+  // Os cartões fixos no HTML ficam como reserva; se /blog/destaques.json
+  // (gerado pelo _gerador) carregar, eles são trocados pelos textos mais novos.
+  var destaques = document.querySelector('.blog-grid[data-destaques]');
+  if (destaques && window.fetch) {
+    fetch('/blog/destaques.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (itens) {
+        if (!Array.isArray(itens) || itens.length === 0) return;
+        var modelo = destaques.querySelector('.blog-card');
+        if (!modelo) return;
+        var novos = [];
+        itens.forEach(function (item) {
+          if (!item || typeof item.url !== 'string' || !/^\/blog\/[a-z0-9-]+\/$/.test(item.url)) return;
+          if (typeof item.imagem !== 'string' || !/^\/assets\/images\//.test(item.imagem)) return;
+          var card = modelo.cloneNode(true);
+          var img = card.querySelector('img');
+          img.src = item.imagem;
+          img.alt = String(item.imagem_alt || '');
+          card.querySelector('.blog-card-category').textContent = String(item.categoria || '');
+          card.querySelector('h3').textContent = String(item.titulo || '');
+          card.querySelector('.blog-card-body p').textContent = String(item.resumo || '');
+          card.querySelector('.blog-card-link').href = item.url;
+          card.classList.add('visible');
+          novos.push(card);
+        });
+        if (novos.length === 0) return;
+        destaques.replaceChildren.apply(destaques, novos);
+      })
+      .catch(function () { /* mantém os cartões fixos */ });
+  }
+
   // ----- Formulário de contato (abre o e-mail pré-preenchido) -----
   var contatoForm = document.querySelector('.contato-form[data-email]');
 
